@@ -74,7 +74,7 @@
     </profiles>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <!--<finalName>${project.artifactId}</finalName>-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -122,12 +122,27 @@
             <plugin>
               <artifactId>maven-resources-plugin</artifactId>
               <version>3.1.0</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- 打source包插件 -->
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- spring boot maven plugin -->
-            <plugin>
+            <!--<plugin>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>
