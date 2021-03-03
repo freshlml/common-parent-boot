@@ -101,7 +101,12 @@
         </resources>
 
         <plugins>
-            <!-- 由于此pom是打pom包，所以不会继承compiler,jar,surefire,resources插件，这里声明之，子pom中将会得到完整的配置 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
+
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>
@@ -111,24 +116,32 @@
                 <target>${java.version}</target>
               </configuration>
             </plugin>
+
             <plugin>
-              <artifactId>maven-jar-plugin</artifactId>
-              <version>3.1.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
             </plugin>
+
             <plugin>
-              <artifactId>maven-surefire-plugin</artifactId>
-              <version>2.22.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
             </plugin>
+
             <plugin>
-              <artifactId>maven-resources-plugin</artifactId>
-              <version>3.1.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <!-- 打source包插件 -->
+
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -138,6 +151,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!-- spring boot maven plugin -->
             <!--<plugin>
               <groupId>org.springframework.boot</groupId>
