@@ -101,47 +101,31 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
-            </plugin>
 
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <version>3.8.1</version>
-              <configuration>
-                <source>${java.version}</source>
-                <target>${java.version}</target>
-              </configuration>
-            </plugin>
+            <!-- plugin申明原则(在其生命周期和默认插件定义中)
+             1、maven会根据实际情况对其生命周期默认定义插件，通过最终的合并后的pom可看
+             2、插件申明是穿插覆盖，项目中申明插件(根据自己要求指定配置或者版本等)，会与maven本身插件配置穿插覆盖，通过最终的合并后的pom可看
+             -->
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-
+            <!-- resources插件: goal=testResources,phase=process-test-resources; goal=resources,phase=process-resources
+                使用sb的版本，指定编码
+             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${maven-resources-plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
+            <!-- 声明source插件
+                使用sb的版本
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -152,11 +136,19 @@
                 </executions>
             </plugin>
 
-            <!-- spring boot maven plugin -->
-            <!--<plugin>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>-->
+            <!-- compiler插件: goal=compiler,phase=compiler; goal=test-compiler,phase=test-compiler
+                使用sb的版本，指定jdk版本
+             -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
