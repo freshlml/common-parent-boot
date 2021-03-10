@@ -3,6 +3,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -100,26 +101,37 @@
             </resource>
         </resources>
 
-        <plugins>
 
-            <!-- plugin申明原则(在其生命周期和默认插件定义中)
+        <!-- plugin申明原则(在其生命周期和默认插件定义中)
              1、maven会根据实际情况对其生命周期默认定义插件，通过最终的合并后的pom可看
-             2、插件申明是穿插覆盖，项目中申明插件(根据自己要求指定配置或者版本等)，会与maven本身插件配置穿插覆盖，通过最终的合并后的pom可看
-             -->
+             2、插件申明或定义是穿插覆盖，项目中申明插件(根据自己要求指定配置或者版本等)，会与maven本身插件配置穿插覆盖，通过最终的合并后的pom可看
+          -->
+        <pluginManagement>
+            <plugins>
+                <!-- resources插件: goal=testResources,phase=process-test-resources; goal=resources,phase=process-resources
+                    使用sb的版本，指定编码
+                 -->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
 
-            <!-- resources插件: goal=testResources,phase=process-test-resources; goal=resources,phase=process-resources
-                使用sb的版本，指定编码
-             -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-
-            <!-- 声明source插件
+                <!-- compiler插件: goal=compiler,phase=compiler; goal=test-compiler,phase=test-compiler
+                    使用sb的版本，指定jdk版本
+                 -->
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- 定义source插件
                 使用sb的版本
             -->
             <plugin>
@@ -134,19 +146,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-
-            <!-- compiler插件: goal=compiler,phase=compiler; goal=test-compiler,phase=test-compiler
-                使用sb的版本，指定jdk版本
-             -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
             </plugin>
 
         </plugins>
