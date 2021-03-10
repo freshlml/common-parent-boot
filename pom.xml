@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <groupId>com.sc</groupId>
+        <artifactId>common-parent-dependencies</artifactId>
+        <version>1.0</version>
         <relativePath />
     </parent>
     <groupId>com.sc</groupId>
@@ -17,20 +17,6 @@
     <name>common-parent-boot</name>
     <description>common-parent for spring boot</description>
     <url>https://www.github.com/freshlml/common-parent-boot</url>
-    <licenses>
-        <license>
-            <name>freshlml</name>
-            <url>https://www.github.com/freshlml/</url>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <name>freshlml</name>
-            <email>1326191992@qq.com</email>
-            <organization>freshlml</organization>
-            <organizationUrl>https://www.github.com/freshlml/</organizationUrl>
-        </developer>
-    </developers>
     <scm>
         <url>https://www.github.com/freshlml/common-parent-boot</url>
     </scm>
@@ -100,7 +86,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
 
         <!-- plugin申明原则(在其生命周期和默认插件定义中)
              1、maven会根据实际情况对其生命周期默认定义插件，通过最终的合并后的pom可看
