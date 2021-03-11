@@ -29,13 +29,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <!-- 定义distribution地址,用于deploy -->
-    <!--<distributionManagement></distributionManagement>-->
-
-    <!-- 定义远端仓库地址 -->
-    <!--<repositories></repositories>-->
-    <!--<pluginRepositories></pluginRepositories>-->
-
     <profiles>
         <profile>
             <id>dev</id>
