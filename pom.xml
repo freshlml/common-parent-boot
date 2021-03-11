@@ -35,9 +35,9 @@
             <properties>
                 <package.environment>dev</package.environment>
             </properties>
-            <activation>
+            <!--<activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>
+            </activation>-->
         </profile>
         <profile>
             <id>test</id>
