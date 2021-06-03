@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.sc</groupId>
-        <artifactId>common-parent-dependencies</artifactId>
-        <version>1.0</version>
+        <groupId>com.xy</groupId>
+        <artifactId>xy-common-dependencies</artifactId>
+        <version>1.0.0</version>
         <relativePath />
     </parent>
-    <groupId>com.sc</groupId>
-    <artifactId>common-parent-boot</artifactId>
-    <version>1.0</version>
+    <groupId>com.xy</groupId>
+    <artifactId>xy-common-parent</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>common-parent-boot</name>
-    <description>common-parent for spring boot</description>
-    <url>https://www.github.com/freshlml/common-parent-boot</url>
+    <name>xy-common-parent</name>
+    <description>xy-common-parent</description>
+    <url>https://www.github.com/freshlml/xy-common-parent</url>
     <scm>
-        <url>https://www.github.com/freshlml/common-parent-boot</url>
+        <url>https://www.github.com/freshlml/xy-common-parent</url>
     </scm>
 
     <properties>
